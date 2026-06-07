@@ -128,14 +128,24 @@
 
   /* ── 수수료 고지 ── */
   .notice {
-    font-size:11px; color:#b09070;
     background:rgba(180,150,110,0.08);
     border:1px solid rgba(180,150,110,0.2);
     border-radius:8px;
-    padding:10px 14px;
-    line-height:1.6;
+    padding:10px 0;
     margin-bottom:32px;
+    overflow:hidden;
+    white-space:nowrap;
+  }
+  .notice-inner {
+    display:inline-block;
+    font-size:13px; color:#b09070;
     letter-spacing:-0.1px;
+    animation: marquee 18s linear infinite;
+    padding-left:100%;
+  }
+  @keyframes marquee {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
   }
 
   /* ── 푸터 ── */
@@ -179,7 +189,7 @@
 
   <!-- 수수료 고지 -->
   <div class="notice">
-    💡 이 페이지의 링크는 네이버 쇼핑 커넥트 활동의 일환입니다. 해당 링크를 통해 상품 구매 시 크리에이터에게 일정 수수료가 지급될 수 있습니다.
+    <span class="notice-inner">💡 이 페이지의 링크는 네이버 쇼핑 커넥트 활동의 일환입니다. 해당 링크를 통해 상품 구매 시 크리에이터에게 일정 수수료가 지급될 수 있습니다.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;💡 이 페이지의 링크는 네이버 쇼핑 커넥트 활동의 일환입니다. 해당 링크를 통해 상품 구매 시 크리에이터에게 일정 수수료가 지급될 수 있습니다.</span>
   </div>
 
   <!-- 세탁/청소 -->
