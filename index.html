@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>도도실장의 PICK</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap');
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    font-family:'Noto Sans KR', sans-serif;
+    background:#f5f0e8;
+    min-height:100vh;
+    display:flex; flex-direction:column; align-items:center;
+    padding:48px 20px 80px;
+  }
+
+  /* 배경 줄선 */
+  body::before {
+    content:'';
+    position:fixed; top:0; left:0; right:0; bottom:0;
+    background: repeating-linear-gradient(
+      0deg, transparent, transparent 40px,
+      rgba(160,130,100,0.06) 40px, rgba(160,130,100,0.06) 41px
+    );
+    pointer-events:none; z-index:0;
+  }
+
+  .wrap { width:100%; max-width:480px; position:relative; z-index:1; }
+
+  /* ── 헤더 ── */
+  .header { text-align:center; margin-bottom:48px; }
+
+  .stamp-wrap {
+    display:flex; justify-content:center; margin-bottom:20px;
+  }
+  .stamp {
+    width:90px; height:90px;
+    background:#1a0f00; border-radius:50%;
+    display:flex; flex-direction:column;
+    align-items:center; justify-content:center; gap:0;
+    position:relative; transform:rotate(-8deg);
+  }
+  .stamp::before {
+    content:''; position:absolute;
+    top:5px; left:5px; right:5px; bottom:5px;
+    border:1.5px solid rgba(255,255,255,0.3); border-radius:50%;
+  }
+  .stamp-top { font-size:9px; color:rgba(255,255,255,0.65); letter-spacing:3px; }
+  .stamp-main { font-size:20px; font-weight:900; color:#fff; letter-spacing:-0.5px; line-height:1.1; }
+  .stamp-line { width:28px; height:1px; background:rgba(255,255,255,0.35); margin:3px 0; }
+  .stamp-bottom { font-size:8px; color:rgba(255,255,255,0.6); letter-spacing:2px; }
+
+  .header-name {
+    font-size:28px; font-weight:900;
+    color:#1a0f00; letter-spacing:-1px;
+    margin-bottom:8px;
+  }
+  .header-sub {
+    font-size:14px; color:#a08060;
+    letter-spacing:1px; line-height:1.6;
+  }
+
+  /* ── 카테고리 섹션 ── */
+  .section { margin-bottom:36px; }
+  .section-title {
+    font-size:11px; font-weight:700;
+    color:#a08060; letter-spacing:3px;
+    text-transform:uppercase;
+    margin-bottom:14px;
+    padding-left:4px;
+    border-left:2px solid #c4a882;
+    padding-left:10px;
+  }
+
+  /* ── 링크 카드 ── */
+  .link-card {
+    display:flex; align-items:center; gap:16px;
+    background:rgba(255,255,255,0.65);
+    backdrop-filter:blur(12px);
+    border:1px solid rgba(255,255,255,0.85);
+    box-shadow:0 2px 12px rgba(120,90,60,0.08);
+    border-radius:14px;
+    padding:18px 20px;
+    margin-bottom:10px;
+    text-decoration:none;
+    transition:transform 0.15s, box-shadow 0.15s;
+    cursor:pointer;
+  }
+  .link-card:hover {
+    transform:translateY(-2px);
+    box-shadow:0 6px 20px rgba(120,90,60,0.14);
+  }
+  .card-icon {
+    width:48px; height:48px; border-radius:10px;
+    display:flex; align-items:center; justify-content:center;
+    font-size:22px; flex-shrink:0;
+  }
+  .card-text { flex:1; }
+  .card-name {
+    font-size:15px; font-weight:700;
+    color:#1a0f00; letter-spacing:-0.3px;
+    margin-bottom:3px;
+  }
+  .card-desc {
+    font-size:12px; color:#a08060;
+    letter-spacing:-0.2px; line-height:1.4;
+  }
+  .card-arrow {
+    font-size:16px; color:#c4a882; flex-shrink:0;
+  }
+
+  /* 카테고리별 아이콘 색상 */
+  .icon-laundry { background:#e8f5ee; }
+  .icon-fan     { background:#e4f2fc; }
+  .icon-beauty  { background:#fdf0f5; }
+  .icon-kitchen { background:#fff8e8; }
+  .icon-blog    { background:#f0ede8; }
+
+  /* ── 구분선 ── */
+  .divider {
+    width:40px; height:1.5px;
+    background:#c4a882; margin:0 auto 36px;
+    opacity:0.5;
+  }
+
+  /* ── 푸터 ── */
+  .footer {
+    text-align:center; margin-top:16px;
+  }
+  .footer-text {
+    font-size:12px; color:#c4a882; letter-spacing:1px;
+  }
+
+  /* 네이버 뱃지 */
+  .naver-badge {
+    display:inline-flex; align-items:center; gap:5px;
+    background:#03c75a; color:#fff;
+    font-size:10px; font-weight:700;
+    padding:3px 8px; border-radius:4px;
+    letter-spacing:0.3px; margin-left:6px;
+    vertical-align:middle;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- 헤더 -->
+  <div class="header">
+    <div class="stamp-wrap">
+      <div class="stamp">
+        <div class="stamp-top">DODO</div>
+        <div class="stamp-main">PICK</div>
+        <div class="stamp-line"></div>
+        <div class="stamp-bottom">실장픽</div>
+      </div>
+    </div>
+    <div class="header-name">도도실장의 P!CK</div>
+    <div class="header-sub">
+      직접 써보고 고른 것만 올려요<br>
+      네이버 공식스토어 구매 링크 모음
+    </div>
+  </div>
+
+  <!-- 세탁/청소 -->
+  <div class="section">
+    <div class="section-title">세탁 · 청소</div>
+
+    <a class="link-card" href="#" target="_blank">
+      <div class="card-icon icon-laundry">🐸</div>
+      <div class="card-text">
+        <div class="card-name">프로쉬 알로에베라 세탁세제 <span class="naver-badge">공식</span></div>
+        <div class="card-desc">형광증백제 無 · 독일 공식 수입 · 진드기 99.3% 제거</div>
+      </div>
+      <div class="card-arrow">→</div>
+    </a>
+
+    <a class="link-card" href="#" target="_blank">
+      <div class="card-icon icon-laundry">🟢</div>
+      <div class="card-text">
+        <div class="card-name">위칙 소독 섬유유연제 <span class="naver-badge">공식</span></div>
+        <div class="card-desc">세균 99.999% 제거 · 세탁물+세탁조 동시 소독</div>
+      </div>
+      <div class="card-arrow">→</div>
+    </a>
+  </div>
+
+  <!-- 여름 가전 -->
+  <div class="section">
+    <div class="section-title">여름 · 가전</div>
+
+    <a class="link-card" href="#" target="_blank">
+      <div class="card-icon icon-fan">🧊</div>
+      <div class="card-text">
+        <div class="card-name">오아 아이스볼트맥스 손풍기 <span class="naver-badge">공식</span></div>
+        <div class="card-desc">펠티어 냉각 3초 · -15℃ · 21% 할인 중</div>
+      </div>
+      <div class="card-arrow">→</div>
+    </a>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 블로그 -->
+  <div class="section">
+    <div class="section-title">블로그 · 리뷰</div>
+
+    <a class="link-card" href="#" target="_blank">
+      <div class="card-icon icon-blog">📝</div>
+      <div class="card-text">
+        <div class="card-name">도도실장의 P!CK 블로그</div>
+        <div class="card-desc">네이버 블로그 · 상세 리뷰 보러가기</div>
+      </div>
+      <div class="card-arrow">→</div>
+    </a>
+  </div>
+
+  <!-- 푸터 -->
+  <div class="footer">
+    <div class="footer-text">© 도도실장의 P!CK · 네이버 공식스토어 제휴</div>
+  </div>
+
+</div>
+</body>
+</html>
